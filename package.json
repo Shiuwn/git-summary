@@ -3,7 +3,7 @@
   "displayName": "Git Summary",
   "description": "Generate summaries of git commits using OpenAI's GPT models",
   "version": "1.0.0",
-  "publisher": "your-publisher-name",
+  "publisher": "shiu",
   "icon": "images/icon.jpeg",
   "engines": {
     "vscode": "^1.60.0"
@@ -15,6 +15,10 @@
     "onCommand:git-summary.generate"
   ],
   "main": "./extension.js",
+  "scripts": {
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
   "contributes": {
     "commands": [
       {
@@ -69,13 +73,9 @@
       }
     }
   },
-  "scripts": {
-    "package": "vsce package",
-    "publish": "vsce publish"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/git-summary"
+    "url": "https://github.com/shiuwn/git-summary"
   },
   "keywords": [
     "git",
