@@ -1,0 +1,97 @@
+{
+  "name": "git-summary",
+  "displayName": "Git Summary",
+  "description": "Generate summaries of git commits using OpenAI's GPT models",
+  "version": "1.0.0",
+  "publisher": "your-publisher-name",
+  "icon": "images/icon.jpeg",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:git-summary.generate"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "git-summary.generate",
+        "title": "Generate Git Summary"
+      }
+    ],
+    "configuration": {
+      "title": "Git Summary",
+      "properties": {
+        "gitSummary.timeRange": {
+          "type": "string",
+          "default": "1 week",
+          "description": "Time range for commit history (e.g., '1 week', '2 days', '1 month')"
+        },
+        "gitSummary.author": {
+          "type": "string",
+          "default": "",
+          "description": "Filter commits by author (empty for all authors)"
+        },
+        "gitSummary.model": {
+          "type": "string",
+          "default": "gpt-3.5-turbo",
+          "description": "OpenAI model to use for summary generation. Can be a predefined model or a custom model identifier"
+        },
+        "gitSummary.baseURL": {
+          "type": "string",
+          "default": "",
+          "description": "Custom base URL for OpenAI API (empty for default OpenAI endpoint)"
+        },
+        "gitSummary.outputPath": {
+          "type": "string",
+          "default": "",
+          "description": "Custom output path for summary files (empty for workspace root)"
+        },
+        "gitSummary.summaryMode": {
+          "type": "string",
+          "default": "subject",
+          "enum": ["subject", "full", "both"],
+          "enumDescriptions": [
+            "Only use commit subjects for summary generation",
+            "Use full commit diffs for summary generation",
+            "Generate two summaries: one based on subjects and one based on diffs"
+          ],
+          "description": "What information to use for generating the summary"
+        },
+        "gitSummary.maxCodeChanges": {
+          "type": "number",
+          "default": 1000,
+          "description": "Maximum number of lines of code changes to include in the summary"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/git-summary"
+  },
+  "keywords": [
+    "git",
+    "summary",
+    "openai",
+    "commit",
+    "changelog"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@vscode/vsce": "latest"
+  }
+}
